@@ -1,0 +1,345 @@
+% ==============================================================================
+% CURRICULUM VITAE LATEX TEMPLATE & AGENT GENERATION INSTRUCTIONS
+% ==============================================================================
+% INSTRUCTIONS FOR THE AI AGENT:
+% 1. PURPOSE:
+%    This document serves as the master LaTeX template for generating customized,
+%    ATS-optimized CVs tailored to specific job descriptions.
+%
+% 2. SOURCE OF TRUTH:
+%    Populate this document ONLY with verified career data from:
+%    `EN/CareerMasterDocument/`
+%    - Personal_Information.md : Contact details, links, location.
+%    - Professional_Summary.md : Base summaries and value propositions.
+%    - Work_Experience/        : Chronological roles, responsibilities, impact.
+%    - Projects.md             : Featured technical and business projects.
+%    - Education.md            : Degrees, universities, dates, coursework.
+%    - Certifications.md       : Professional credentials and licensures.
+%    - Skills.md & Technologies.md: Technical competencies and tools.
+%    - Keywords.md             : Industry and ATS keywords.
+%    - Quantifiable_Results.md : Metrics, KPIs, and concrete outcomes.
+%
+% 3. IMMUTABLE FACTS RULE:
+%    - NEVER alter, estimate, round, or fabricate employment dates.
+%    - NEVER change company names, job titles, or educational institutions.
+%    - Maintain exact reverse chronological order.
+%
+% 4. TAILORING & SELECTION:
+%    - Analyze the target job description for key requirements, tools, and keywords.
+%    - Select the most relevant bullets and projects. Do not include everything.
+%    - Emphasize quantifiable business outcomes (STAR method) and bold key technologies.
+%
+% 5. LATEX SYNTAX & ESCAPING:
+%    - ALWAYS escape reserved LaTeX characters:
+%      '&' -> '\&', '%' -> '\%', '_' -> '\_', '#' -> '\#', '$' -> '\$'
+%    - Preserve all custom macros (\sectionline, \cvblock, \jobentry) and layout dimensions.
+%    - Maintain document length (typically strictly 2 pages) by balancing bullet counts.
+% ==============================================================================
+
+\RequirePackage{cmap} % Prevents accent separation when copying PDF text (ATS Optimization)
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2cm, top=0.8cm, bottom=1.2cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Colors matching reference design
+\definecolor{bannerblue}{HTML}{BBD0E3}
+\definecolor{dividerblue}{HTML}{8BA5BE}
+\definecolor{darkblue}{HTML}{2C4A6F}
+\definecolor{textdark}{HTML}{222222}
+
+% PDF Metadata
+% INSTRUCTION: Replace bracketed placeholders with candidate name and target role
+\hypersetup{
+    colorlinks=true,
+    urlcolor=darkblue,
+    linkcolor=darkblue,
+    pdfauthor={[INSTRUCTION: Insert Candidate Full Name]},
+    pdftitle={[INSTRUCTION: Insert 'CV - Candidate Full Name - Target Role Title']}
+}
+
+% Global Spacing & List Formatting
+\setstretch{1.04}
+\setlist[itemize]{leftmargin=12pt, itemsep=2pt, topsep=1pt, parsep=0pt, partopsep=0pt}
+
+% Section divider line macro (thick block on left, thin line on right)
+\newcommand{\sectionline}{%
+  \vspace{4pt}%
+  \noindent%
+  \begin{minipage}[b]{3.5cm}%
+    \color{bannerblue}\rule{\linewidth}{4.5pt}%
+  \end{minipage}%
+  \hspace{0.3cm}%
+  \begin{minipage}[b]{\dimexpr\textwidth-3.8cm\relax}%
+    \color{dividerblue}\rule{\linewidth}{1.2pt}%
+  \end{minipage}%
+  \par \vspace{4pt}%
+}
+
+% Robust 2-column block macro with strict width math
+% Parameter #1: Section title (left column, 3.5cm)
+% Parameter #2: Section content (right column, remaining width)
+\newcommand{\cvblock}[2]{%
+  \vspace{2pt}%
+  \noindent%
+  \begin{minipage}[t]{3.5cm}%
+    \raggedright \bfseries \small \color{textdark} #1%
+  \end{minipage}%
+  \hspace{0.3cm}%
+  \begin{minipage}[t]{\dimexpr\textwidth-3.8cm\relax}%
+    \small \color{textdark} #2%
+  \end{minipage}%
+  \par \vspace{3pt}%
+}
+
+% Macro for subsequent entries sharing the section alignment without repeating the left header
+\newcommand{\jobentry}[1]{%
+  \vspace{2pt}%
+  \noindent%
+  \begin{minipage}[t]{3.5cm}%
+    \hspace{1pt}%
+  \end{minipage}%
+  \hspace{0.3cm}%
+  \begin{minipage}[t]{\dimexpr\textwidth-3.8cm\relax}%
+    \small \color{textdark} #1%
+  \end{minipage}%
+  \par \vspace{3pt}%
+}
+
+\begin{document}
+\color{textdark}
+
+%==================================================
+% TOP CONTACT BANNER
+%==================================================
+% INSTRUCTION FOR AGENT:
+% Extract candidate location, phone number, and primary email from Personal_Information.md.
+% Separate items using '\ \ $|$ \ \ '. Wrap email in \href{mailto:...}{...}.
+\begin{tcolorbox}[
+  colback=bannerblue,
+  colframe=bannerblue,
+  arc=0mm,
+  boxrule=0pt,
+  top=5pt,
+  bottom=5pt,
+  left=10pt,
+  right=10pt,
+  halign=center
+]
+  \small \bfseries \color{textdark}
+  [INSTRUCTION: City, Country] \ \ $|$ \ \ [INSTRUCTION: Phone Number] \ \ $|$ \ \ \href{mailto:[INSTRUCTION: Email Address]}{[INSTRUCTION: Email Address]}
+\end{tcolorbox}
+
+\vspace{5pt}
+
+%==================================================
+% NAME & TITLE
+%==================================================
+% INSTRUCTION FOR AGENT:
+% 1. Line 1: Candidate's full legal name in UPPERCASE bold.
+% 2. Line 2: Target job title / primary professional identity in uppercase darkblue,
+%    optionally followed by ' $|$ ' and secondary specialization matching the target job posting.
+\noindent
+{\LARGE \textbf{[INSTRUCTION: CANDIDATE FULL NAME IN UPPERCASE]}}\\[3pt]
+{\small \textbf{\color{darkblue}[INSTRUCTION: TARGET JOB TITLE $|$ SECONDARY SPECIALIZATION / DOMAIN]}}
+
+\vspace{6pt}
+
+%==================================================
+% WEBSITES, PORTFOLIOS, PROFILES
+%==================================================
+% INSTRUCTION FOR AGENT:
+% Extract 2-3 primary professional profile links (LinkedIn, GitHub, Portfolio) from Personal_Information.md.
+% Use an itemize environment. Format each item as: \href{https://...}{display url without https://}.
+\sectionline
+\cvblock{WEBSITES,\\PORTFOLIOS,\\PROFILES}{%
+  \begin{itemize}
+    \item \href{[INSTRUCTION: Full URL to LinkedIn Profile]}{[INSTRUCTION: Clean Display URL, e.g., linkedin.com/in/username]}
+    \item \href{[INSTRUCTION: Full URL to GitHub Profile]}{[INSTRUCTION: Clean Display URL, e.g., github.com/username]}
+    % INSTRUCTION: Optional additional portfolio, website, or Google Scholar link if relevant:
+    % \item \href{[INSTRUCTION: Full URL]}{[INSTRUCTION: Clean Display URL]}
+  \end{itemize}
+}
+
+%==================================================
+% PROFESSIONAL SUMMARY
+%==================================================
+% INSTRUCTION FOR AGENT:
+% 1. Synthesize a powerful 3-5 sentence summary (~80-110 words) drawing from Professional_Summary.md,
+%    CareerVision.md, and Keywords.md.
+% 2. Tailor directly to the target job description, highlighting relevant years of experience,
+%    key domain expertise, core technologies (bolded using \textbf{...}), problem-solving capabilities,
+%    and language proficiencies.
+% 3. Maintain absolute factual truth; do NOT invent qualifications or experience.
+\sectionline
+\cvblock{PROFESSIONAL\\SUMMARY}{%
+  [INSTRUCTION: Write a tailored 3-5 sentence professional summary here. Highlight core specialization, years of experience, bolded key technologies matching target job, major domains of expertise, key achievements, and language proficiencies (e.g., English (Fluent / C1) and Spanish (Native / C2)). Ensure tone is confident, professional, and commercially grounded.]
+}
+
+%==================================================
+% WORK EXPERIENCE
+%==================================================
+% INSTRUCTION FOR AGENT:
+% 1. Source positions from Work_Experience/ and metrics from Quantifiable_Results.md.
+% 2. Order positions in STRICT REVERSE CHRONOLOGICAL ORDER.
+% 3. CRITICAL: NEVER alter, round, or fabricate dates, job titles, or company names.
+% 4. Select the most relevant 3-5 roles. Emphasize roles closely aligned to the target job.
+% 5. The FIRST role must be placed directly inside the \cvblock{WORK\\EXPERIENCE}{...} macro.
+% 6. For each subsequent role, use the \jobentry{...} macro.
+% 7. Bullet point guidelines:
+%    - 3-5 bullets for primary/recent roles; 2-3 bullets for earlier roles.
+%    - Structure: Action Verb + Context/Problem + Specific Solution/Tools + Quantifiable Impact.
+%    - Bold critical technologies, tools, and methodologies (\textbf{Tool}).
+%    - Escape LaTeX characters (\&, \%, \_).
+\sectionline
+\cvblock{WORK\\EXPERIENCE}{%
+  \textbf{[INSTRUCTION: Most Recent Job Title]}\hfill \textbf{[INSTRUCTION: Start Month Year -- Present / End Month Year]}\\
+  \emph{[INSTRUCTION: Company Name - City, Country (or Remote)]}
+  \begin{itemize}
+    \item {[INSTRUCTION: High-impact accomplishment bullet starting with strong action verb, detailing architecture, development, or methodology, bolding key tools with \textbf{Tech}, and including quantified result/metrics].}
+    \item {[INSTRUCTION: Business value / operational impact bullet detailing how solutions solved user/stakeholder problems, saved time, cut costs, or scaled systems].}
+    \item {[INSTRUCTION: End-to-end delivery bullet covering tech stack, deployment, infrastructure, or data/ML pipelines (\textbf{Technologies Used})].}
+    \item {[INSTRUCTION: Leadership, cross-functional collaboration, mentoring, or engineering standards bullet].}
+  \end{itemize}
+}
+
+% INSTRUCTION: Use \jobentry{...} for each additional relevant position (typically 2-4 more roles).
+\jobentry{%
+  \textbf{[INSTRUCTION: Second Most Recent Job Title]}\hfill \textbf{[INSTRUCTION: Start Month Year -- End Month Year]}\\
+  \emph{[INSTRUCTION: Company Name - City, Country (or Remote)]}
+  \begin{itemize}
+    \item {[INSTRUCTION: High-impact tailored bullet with action verb, technologies (\textbf{Tech}), and measurable metric].}
+    \item {[INSTRUCTION: Technical implementation / architecture / analysis bullet with quantified outcome].}
+    \item {[INSTRUCTION: Collaboration or process automation bullet demonstrating operational value].}
+  \end{itemize}
+}
+
+\jobentry{%
+  \textbf{[INSTRUCTION: Third Most Recent Job Title]}\hfill \textbf{[INSTRUCTION: Start Month Year -- End Month Year]}\\
+  \emph{[INSTRUCTION: Company Name - City, Country (or Remote)]}
+  \begin{itemize}
+    \item {[INSTRUCTION: High-impact tailored bullet highlighting technologies relevant to target role].}
+    \item {[INSTRUCTION: Key accomplishment or system improvement with concrete outcome].}
+  \end{itemize}
+}
+
+% INSTRUCTION: Add further \jobentry blocks if relevant and space permits, or omit earlier less-relevant roles to fit page limit.
+
+%==================================================
+% FEATURED PROJECTS
+%==================================================
+% INSTRUCTION FOR AGENT:
+% 1. Source from Projects.md. Select 2-3 projects most relevant to the target job description.
+% 2. Structure each item:
+%    \item \textbf{[Project Name]:} [1-2 sentences explaining the project goal, system architecture,
+%          and concrete outcome/value] (\textbf{[Tech 1]}, \textbf{[Tech 2]}, \textbf{[Tech 3]}).
+% 3. Bold key technologies matching keywords from the job posting.
+\sectionline
+\cvblock{FEATURED\\PROJECTS}{%
+  \begin{itemize}
+    \item \textbf{[INSTRUCTION: Featured Project 1 Name]:} [INSTRUCTION: 1-2 sentence description explaining problem solved, technical approach, and quantifiable result/deliverable] (\textbf{[INSTRUCTION: Primary Technologies/Frameworks]}).
+    \item \textbf{[INSTRUCTION: Featured Project 2 Name]:} [INSTRUCTION: 1-2 sentence description explaining problem solved, technical approach, and quantifiable result/deliverable] (\textbf{[INSTRUCTION: Primary Technologies/Frameworks]}).
+    \item \textbf{[INSTRUCTION: Featured Project 3 Name]:} [INSTRUCTION: 1-2 sentence description explaining problem solved, technical approach, and quantifiable result/deliverable] (\textbf{[INSTRUCTION: Primary Technologies/Frameworks]}).
+  \end{itemize}
+}
+
+%==================================================
+% EDUCATION
+%==================================================
+% INSTRUCTION FOR AGENT:
+% 1. Source degrees from Education.md in REVERSE CHRONOLOGICAL ORDER.
+% 2. CRITICAL: NEVER alter degree titles, dates, institutions, or locations.
+% 3. Format each degree entry with:
+%    \textbf{[Degree Title]}\hfill \textbf{[Start Date -- End Date / Present]}\\
+%    \emph{[Institution Name] - [City, Country]}\\
+%    {\small \emph{Key Coursework:} [Course 1, Course 2, Course 3, ... (tailored to job)].}
+% 4. Include honors, GPA, or academic exchange scholarships (e.g., ERASMUS+) where applicable.
+% 5. Separate entries with \vspace{3pt}.
+\sectionline
+\cvblock{EDUCATION}{%
+  \textbf{[INSTRUCTION: Master's / Highest Degree Title]}\hfill \textbf{[INSTRUCTION: Start Month Year -- Graduation Month Year / Present]}\\
+  \emph{[INSTRUCTION: University Name - City, Country]}\\
+  {\small \emph{Key Coursework:} [INSTRUCTION: 4-6 coursework topics most relevant to target job description.]}
+
+  \vspace{3pt}
+
+  \textbf{[INSTRUCTION: Bachelor's / Undergraduate Degree Title]}\hfill \textbf{[INSTRUCTION: Start Month Year -- Graduation Month Year]}\\
+  \emph{[INSTRUCTION: University Name - City, Country]}\\
+  {\small \emph{Key Coursework:} [INSTRUCTION: 4-6 relevant coursework topics.] [INSTRUCTION: GPA if noteworthy / required.]}
+
+  % INSTRUCTION: Optional academic exchange, honors, or scholarships:
+  \vspace{3pt}
+
+  \textbf{[INSTRUCTION: Academic Grant / Exchange Program / Honor (if applicable)]}\hfill \textbf{[INSTRUCTION: Year / Duration]}\\
+  {\small [INSTRUCTION: Brief 1-line description of research focus, scholarship prestige, or academic accomplishments.]}
+}
+
+%==================================================
+% CERTIFICATIONS AND RECOGNITION
+%==================================================
+% INSTRUCTION FOR AGENT:
+% 1. Source from Certifications.md, Publications_Talks.md, and Achievements.md.
+% 2. Prioritize industry-recognized certifications and professional honors relevant to target job.
+% 3. Format as a dense, comma-separated paragraph to conserve vertical space.
+% 4. Include peer-review activities, patents, or publications if relevant to role.
+\sectionline
+\cvblock{CERTIFICATIONS\\AND HONORS}{%
+  [INSTRUCTION: Comma-separated list of relevant certifications, credentialing bodies (e.g., AWS, edX, Harvard, deeplearning.ai), academic grants, and peer-review / editorial honors tailored to the target position.]
+}
+
+%==================================================
+% TECHNICAL SKILLS
+%==================================================
+% INSTRUCTION FOR AGENT:
+% 1. Source from Skills.md and Technologies.md.
+% 2. Align selection with the job posting requirements and ATS keywords.
+% 3. Group into 2-4 coherent skill categories (e.g., Applied AI \& ML, Software \& Cloud, Data \& Analytics).
+% 4. Format: \textbf{[Category Name]:} Skill1, Skill2, Skill3 \ \ $|$ \ \ \textbf{[Next Category]:} ...
+% 5. Only include skills and tools grounded in the candidate's source documents.
+\sectionline
+\cvblock{TECHNICAL SKILLS}{%
+  \textbf{[INSTRUCTION: Category 1 (e.g., Primary Specialty / Applied AI \& ML)]:} [INSTRUCTION: Comma-separated list of relevant tools, libraries, models, and frameworks] \ \ $|$ \ \ \textbf{[INSTRUCTION: Category 2 (e.g., Software Engineering \& Cloud)]:} [INSTRUCTION: Comma-separated list of languages, cloud services, and DevOps tools] \ \ $|$ \ \ \textbf{[INSTRUCTION: Category 3 (e.g., Data \& Analytics)]:} [INSTRUCTION: Comma-separated list of databases, ETL, BI, and data processing tools]
+}
+
+%==================================================
+% CORE COMPETENCIES
+%==================================================
+% INSTRUCTION FOR AGENT:
+% 1. Source from Skills.md, Keywords.md, and Leadership.md.
+% 2. Select 8-10 high-value functional competencies, architectural strengths, and leadership attributes matching the target job.
+% 3. Present in a two-column layout using two minipages (0.48\linewidth each) with itemize lists.
+% 4. Include language proficiencies in the final bullet (e.g., English (Fluent C1) \& Spanish (Native C2)).
+\sectionline
+\cvblock{CORE\\COMPETENCIES}{%
+  \begin{minipage}[t]{0.48\linewidth}
+    \begin{itemize}
+      \item {[INSTRUCTION: Core competency 1 tailored to target role]}
+      \item {[INSTRUCTION: Core competency 2 tailored to target role]}
+      \item {[INSTRUCTION: Core competency 3 tailored to target role]}
+      \item {[INSTRUCTION: Core competency 4 tailored to target role]}
+      \item {[INSTRUCTION: Core competency 5 tailored to target role]}
+    \end{itemize}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.48\linewidth}
+    \begin{itemize}
+      \item {[INSTRUCTION: Core competency 6 tailored to target role]}
+      \item {[INSTRUCTION: Core competency 7 tailored to target role]}
+      \item {[INSTRUCTION: Core competency 8 tailored to target role]}
+      \item {[INSTRUCTION: Core competency 9 tailored to target role]}
+      \item {[INSTRUCTION: Language proficiencies from Personal\_Information.md, e.g., English (Fluent C1) \& Spanish (Native C2)]}
+    \end{itemize}
+  \end{minipage}
+}
+
+\end{document}
