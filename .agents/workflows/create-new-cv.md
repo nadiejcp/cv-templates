@@ -1,5 +1,5 @@
 ---
-description: Generates a tailored CV based on CareerMasterDocument and target_job.md.
+description: Generates a tailored CV in English based on CareerMasterDocument and target_job.md.
 ---
 
 ---

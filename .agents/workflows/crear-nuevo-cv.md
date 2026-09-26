@@ -1,5 +1,5 @@
 ---
-description: Genera un CV específico para el trabajo descrito en target_job.md
+description: Genera un CV específico en Español para el trabajo descrito en target_job.md
 ---
 
 ---
