@@ -1,0 +1,229 @@
+% ==============================================================================
+% UX / UI & PRODUCT DESIGN CURRICULUM VITAE TEMPLATE
+% ==============================================================================
+% INSTRUCTIONS FOR THE AI AGENT:
+% 1. PURPOSE:
+%    ATS-optimized, clean single-page CV template styled for UX/UI Designers,
+%    Product Designers, and Frontend / Design Engineers.
+%
+% 2. SOURCE OF TRUTH:
+%    Populate this document ONLY with verified career data from:
+%    `CareerMasterDocument/`
+%    - Personal_Information.md : Contact details, links, location.
+%    - Professional_Summary.md : 3-4 sentence targeted summary.
+%    - Work_Experience/        : Roles, responsibilities, quantifiable impact.
+%    - Skills.md & Technologies.md : Core design strengths & technical toolset.
+%    - Education.md            : Degrees, institutions, and graduation years.
+%
+% 3. DESIGN SPECIFICATION:
+%    - Centered Header with Name, Subtitle, and clean contact line.
+%    - Centered Section Titles with full-width horizontal rule underneath.
+%    - Experience entries formatted as:
+%        [Company Name]
+%        [Position] | [Location] | [Dates]
+%        [Role Overview / Scope Description]
+%        • [Bullet points with quantifiable metrics]
+%    - Skills Section: 2x2 grid of modern card boxes with subtle light-grey borders.
+%    - Education entries formatted with Institution, Degree | Location | Dates.
+%    - Strict 1-Page budget: Content fits elegantly without overflow.
+% ==============================================================================
+
+\documentclass[10pt,letterpaper]{article}
+
+% --- Core Packages ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.4cm, top=1.2cm, bottom=1.2cm]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+
+% --- Color Palette ---
+\definecolor{headerblack}{HTML}{111111}
+\definecolor{subtitlecolor}{HTML}{555555}
+\definecolor{contactcolor}{HTML}{444444}
+\definecolor{metacolor}{HTML}{555555}
+\definecolor{bodydark}{HTML}{222222}
+\definecolor{rulecolor}{HTML}{333333}
+\definecolor{boxborder}{HTML}{D0D0D0}
+\definecolor{boxtitle}{HTML}{111111}
+\definecolor{boxtext}{HTML}{444444}
+
+% --- Hyperlink Settings ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=contactcolor,
+    urlcolor=contactcolor,
+    pdfborder={0 0 0}
+}
+
+% --- Page & Paragraph Settings ---
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Bullet point list configuration
+\setlist[itemize]{
+    leftmargin=1.2em,
+    label={\small\textbullet},
+    itemsep=2pt,
+    topsep=2pt,
+    parsep=0pt,
+    partopsep=0pt
+}
+
+% --- Custom Command: Centered Section Header with Full-Width Rule ---
+\newcommand{\cvsection}[1]{%
+    \vspace{9pt}%
+    \begin{center}%
+        {\fontsize{11.5}{14}\selectfont \textbf{#1}}\par
+        \vspace{3pt}%
+        \color{rulecolor}\rule{\textwidth}{0.5pt}%
+    \end{center}%
+    \vspace{-2pt}%
+}
+
+% --- Custom Command: Experience Entry ---
+% #1: Company Name
+% #2: Position / Job Title
+% #3: Location
+% #4: Dates
+% #5: Overview / Scope description
+% #6: Bullet points
+\newcommand{\experienceentry}[6]{%
+    \vspace{6pt}%
+    \noindent{\fontsize{10.5}{13}\selectfont \textbf{#1}}\par
+    \vspace{1.5pt}%
+    \noindent{\fontsize{9.5}{12}\selectfont \color{metacolor} #2 \textbar{} #3 \textbar{} #4}\par
+    \vspace{2.5pt}%
+    \noindent{\fontsize{9}{11.5}\selectfont \color{bodydark} #5}\par
+    \vspace{1.5pt}%
+    #6%
+}
+
+% --- Custom Command: Skills Card Box (2x2 Grid) ---
+% #1: Category Title
+% #2: Skills List / Description
+\newcommand{\skillcard}[2]{%
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=boxborder,
+        boxrule=0.6pt,
+        arc=1.5pt,
+        top=4.5pt,
+        bottom=4.5pt,
+        left=6pt,
+        right=6pt,
+        width=0.488\textwidth,
+        height=36pt,
+        valign=top,
+        nobeforeafter
+    ]
+        {\fontsize{9}{11.5}\selectfont \textbf{\color{boxtitle} #1}}\par
+        \vspace{2pt}
+        {\fontsize{8}{10.5}\selectfont \color{boxtext} #2}
+    \end{tcolorbox}%
+}
+
+% --- Custom Command: Education Entry ---
+% #1: Institution Name
+% #2: Degree Title & Major
+% #3: Location
+% #4: Dates
+\newcommand{\educationentry}[4]{%
+    \vspace{5pt}%
+    \noindent{\fontsize{10.5}{13}\selectfont \textbf{#1}}\par
+    \vspace{1.5pt}%
+    \noindent{\fontsize{9.5}{12}\selectfont \color{metacolor} #2 \textbar{} #3 \textbar{} #4}\par
+}
+
+% ==============================================================================
+% DOCUMENT BEGIN
+% ==============================================================================
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% HEADER: Name, Subtitle, Contact Line
+% ------------------------------------------------------------------------------
+\begin{center}
+    {\fontsize{20}{24}\selectfont \textbf{\color{headerblack} [Your Full Name]}}\par
+    \vspace{4pt}
+    {\fontsize{10.5}{13}\selectfont \color{subtitlecolor} [Target Job Title] \textbar{} [Core Specialization]}\par
+    \vspace{4pt}
+    {\fontsize{9}{12}\selectfont \color{contactcolor} [Email] \textbullet{} [LinkedIn Profile] \textbullet{} [City, Country]}\par
+\end{center}
+
+% ------------------------------------------------------------------------------
+% SECTION: Summary
+% ------------------------------------------------------------------------------
+\cvsection{Summary}
+\noindent{\fontsize{8.8}{12}\selectfont \color{bodydark}%
+[Provide a 3-4 sentence professional summary highlighting your career scope, core design/engineering capabilities, flagship quantifiable achievement, and target value proposition aligned with the job description.]%
+}
+
+% ------------------------------------------------------------------------------
+% SECTION: Experience
+% ------------------------------------------------------------------------------
+\cvsection{Experience}
+
+% --- Job 1 ---
+\experienceentry{[Company Name 1]}{[Job Title]}{[Location]}{[Month Year -- Present]}%
+{[Brief 1-sentence overview of ownership scope, product mission, or team leadership]}%
+{%
+\begin{itemize}
+    \item [Action verb] + [task/feature designed or developed] + [resulting in quantifiable impact: \%, \$, time saved]
+    \item [Action verb] + [wireframes, prototypes, design systems, or architecture built] + [measured outcome]
+    \item [Action verb] + [cross-functional collaboration or team mentorship] + [delivery success metric]
+\end{itemize}
+}
+
+% --- Job 2 ---
+\experienceentry{[Company Name 2]}{[Job Title]}{[Location]}{[Month Year -- Month Year]}%
+{[Brief 1-sentence overview of ownership scope, product mission, or team leadership]}%
+{%
+\begin{itemize}
+    \item [Action verb] + [user research, usability testing, or feature iteration] + [resulting in X\% improvement]
+    \item [Action verb] + [key project delivered or system component built] + [business impact achieved]
+    \item [Action verb] + [design techniques, tooling, or methodologies applied] + [user satisfaction/efficiency metric]
+\end{itemize}
+}
+
+% --- Job 3 ---
+\experienceentry{[Company Name 3]}{[Job Title]}{[Location]}{[Month Year -- Month Year]}%
+{[Brief 1-sentence overview of ownership scope, product mission, or team leadership]}%
+{%
+\begin{itemize}
+    \item [Action verb] + [supported senior stakeholders in prototyping or design systems] + [positive result]
+    \item [Action verb] + [conducted user testing or interface improvements] + [outcome metric]
+    \item [Action verb] + [contributed to major product launch or platform release] + [measurable win]
+\end{itemize}
+}
+
+% ------------------------------------------------------------------------------
+% SECTION: Skills (2x2 Card Grid)
+% ------------------------------------------------------------------------------
+\cvsection{Skills}
+\vspace{2pt}
+\noindent
+\skillcard{Design}{Interaction design, Visual design, Prototyping, Information architecture, Wireframing}%
+\hfill%
+\skillcard{Systems}{Design systems, Figma, Component libraries, Design tokens}
+
+\vspace{4.5pt}
+\noindent
+\skillcard{Accessibility}{WCAG 2.2, Colour contrast, Keyboard navigation, Inclusive design}%
+\hfill%
+\skillcard{Tools}{Figma, FigJam, Sketch, Principle, Zeplin}
+
+% ------------------------------------------------------------------------------
+% SECTION: Education
+% ------------------------------------------------------------------------------
+\cvsection{Education}
+\educationentry{[University / Institution Name 1]}{[Degree Title \& Major]}{[Location]}{[Year -- Year]}
+
+\educationentry{[University / Institution Name 2]}{[Degree Title \& Major]}{[Location]}{[Year -- Year]}
+
+\end{document}
