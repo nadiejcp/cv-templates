@@ -19,7 +19,7 @@ Act as an expert technical recruiter and professional resume writer.
 1. Read the target role requirements directly from `target_job.md`.
 2. Cross-reference files in `CareerMasterDocument/` to extract the most relevant experience, technical skills, and quantifiable achievements matching the target role.
 3. Populate `template.tex` with the extracted content and write the result to `createdCV/Curriculum_Vitae.tex`.
-4. If a LaTeX compiler (`pdflatex`, `xelatex`, or `latexmk`) is available in the environment, compile `createdCV/Curriculum_Vitae.tex` to produce `createdCV/Curriculum_Vitae.pdf`.
+4. If a LaTeX compiler (`pdflatex`, `xelatex`, or `latexmk`) is available in the environment, compile `createdCV/Curriculum_Vitae.tex` to produce `createdCV/Curriculum_Vitae.pdf` otherwise notify the user to install one of them.
 
 # Instructions & Constraints
 * **Source of Truth:** Match requirements solely against `target_job.md`.
