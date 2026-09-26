@@ -71,6 +71,8 @@ Inside the [Work_Experience/](CareerMasterDocument/Work_Experience/) folder:
 
 ## 🎯 How to Generate a Tailored CV (Automated Workflow)
 
+Copy a template for the type of CV you want to generate and save it in the root folder. So the file `./template.tex` exists. You can find the templates in all folders that end with _Template, e.g. [Developer_Template/](Developer_Template/)
+
 You do **not** need to write or fiddle with manual prompts! This repository includes a pre-configured agent workflow ([`.agents/workflows/create-new-cv.md`](.agents/workflows/create-new-cv.md)) with all role prompts, data integrity rules, ATS constraints, and LaTeX generation instructions built-in.
 
 ### 1. Paste the Target Job

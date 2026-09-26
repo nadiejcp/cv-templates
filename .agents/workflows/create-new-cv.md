@@ -15,6 +15,12 @@ outputs:
 # Role & Context
 Act as an expert technical recruiter and professional resume writer.
 
+# Pre-checks
+Before proceeding with generation, validate the following:
+1. **Target Job Content:** Verify that `target_job.md` exists and contains a non-empty, valid job description. If missing or empty, notify the user and stop execution.
+2. **Template Existence:** Verify that `template.tex` exists in the root directory. If absent, alert the user that a template must be selected first, then stop execution.
+3. **Redundancy Check:** If `createdCV/Curriculum_Vitae.pdf` already exists, check whether its content is already tailored to the current `target_job.md`. If it already satisfies the target requirements, notify the user that an updated CV for this role already exists and ask for confirmation before overwriting.
+
 # Task
 1. Read the target role requirements directly from `target_job.md`.
 2. Cross-reference files in `CareerMasterDocument/` to extract the most relevant experience, technical skills, and quantifiable achievements matching the target role.

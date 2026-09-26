@@ -15,6 +15,12 @@ outputs:
 # Rol y Contexto
 Actúa como un reclutador técnico experto y redactor profesional de currículums.
 
+# Validaciones Previas (Pre-checks)
+Antes de proceder con la generación, valida lo siguiente:
+1. **Contenido de la oferta laboral:** Verifica que `target_job.md` exista y contenga una descripción de puesto válida y no vacía. Si no existe o está vacío, notifica al usuario y detén la ejecución.
+2. **Existencia de la plantilla:** Verifica que el archivo `template.tex` exista en la carpeta raíz. Si no está presente, notifica al usuario que primero debe seleccionar una plantilla y detén la ejecución.
+3. **Control de redundancia:** Si `createdCV/Curriculum_Vitae.pdf` ya existe, comprueba si su contenido ya está adaptado a los requisitos actuales de `target_job.md`. De ser así, notifica al usuario que ya existe un CV actualizado para este puesto y solicita confirmación antes de sobrescribirlo.
+
 # Tarea
 1. Lee los requisitos del puesto directamente desde `target_job.md`.
 2. Cruza la información con los archivos en `CareerMasterDocument/` para extraer la experiencia más relevante, las habilidades técnicas y los logros cuantificables que coincidan con el rol objetivo.
